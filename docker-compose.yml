@@ -1,0 +1,45 @@
+services:
+  db:
+    image: post-commerce:latest
+    container_name: db
+    ports:
+      - "5000:5432"
+    networks:
+      - db-user-networks
+      - db-warehouse-networks
+  
+  user-java:
+    build:
+      context: ./user
+      dockerfile: Dockerfile
+    container_name: user-java    
+    ports:
+      - "8081:8081"
+    depends_on:
+      - db
+    networks:
+      - db-user-networks
+      - user-warehouse-networks
+
+  warehouse-app:
+    build:
+      context: ./user
+      dockerfile: Dockerfile
+    container_name: warehouse-java
+    ports: 
+      - "8082:8082"
+    depends_on:
+      - db
+    networks:
+      - db-warehouse-networks
+      - user-warehouse-networks
+    environment:
+      - SERVER_PORT=8082
+
+networks:
+  db-user-networks:
+    driver: bridge
+  db-warehouse-networks:
+    driver: bridge
+  user-warehouse-networks:
+    driver: bridge

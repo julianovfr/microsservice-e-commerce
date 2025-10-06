@@ -19,9 +19,11 @@ public class ProductShowController {
 
     @GetMapping("/show")
     public ResponseEntity showProducts(){
-        System.out.println("Recebendo pedidos...");
+        System.out.println("Recebendo pedidos... em get show");
         List<ProductEntity> products = productList.listProduct();
 
-        return ResponseEntity.ok(products);
+        return ResponseEntity.ok()
+                .header("Content-Type", "application/json")
+                .body(products);
     }
 }

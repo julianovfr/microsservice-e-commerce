@@ -15,10 +15,8 @@ public class ProductStockController {
     @GetMapping("/show")
     public ResponseEntity showProducts(){
 
-        var response = productService.pedido();
 
-        System.out.println(response);
 
-        return ResponseEntity.ok().body(response);
+        return productService.pedido();
     }
 }

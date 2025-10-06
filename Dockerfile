@@ -8,3 +8,4 @@ COPY ./init.sql /docker-entrypoint-initdb.d/
 
 #porta padrao
 EXPOSE 5432
+

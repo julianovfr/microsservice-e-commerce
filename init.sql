@@ -1,3 +1,3 @@
-CREATE DATABASE "ms-store" OWNER "commerce";
+CREATE DATABASE "ms-user" OWNER "commerce";
 
-CREATE DATABASE "ms-warehouse" OWNER "commerce";
+CREATE DATABASE "ms-product" OWNER "commerce";
